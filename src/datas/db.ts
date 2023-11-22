@@ -1,3 +1,5 @@
+import Resource from "@/interfaces/resourceInterface";
+
 const datas: Resource[] = [
   {
     id: "fsfsd",
