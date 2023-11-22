@@ -66,7 +66,7 @@ const onClickSupprimerAction = (resource: Resource) => {
       >
       <v-btn
         v-if="modeSuppression"
-        color="secondary"
+        color="error"
         @click="onClickSupprimerAction(resourceParam)"
         >- Supprimer</v-btn
       >

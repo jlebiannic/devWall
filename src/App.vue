@@ -11,12 +11,18 @@ const resources: Resource[] = datas;
 const listeDeLecture = ref<Resource[]>([]);
 
 const ajouterALaListeDeLecture = (resource: Resource) => {
-  listeDeLecture.value.push(resource);
+  if (!listeDeLecture.value.includes(resource)) {
+    listeDeLecture.value.push(resource);
+  }
 };
 
 const supprimerDeLaListeDeLecture = (resource: Resource) => {
-  const index = listeDeLecture.value.findIndex((r) => r.id === resource.id);
-  listeDeLecture.value.splice(index, 1);
+  // const index = listeDeLecture.value.findIndex((r) => r.id === resource.id);
+  // listeDeLecture.value.splice(index, 1);
+
+  listeDeLecture.value = listeDeLecture.value.filter(
+    (res) => res.id !== resource.id
+  );
 };
 </script>
 
