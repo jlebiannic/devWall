@@ -4,7 +4,15 @@ import defaultImage from "@/assets/default.png";
 import frenchFlags from "@/assets/frenchFlag.png";
 import { computed, watch } from "vue";
 
-const { resourceParam } = defineProps<{ resourceParam: Resource }>();
+const { resourceParam } = defineProps<{
+  resourceParam: Resource;
+  modeAjout?: boolean;
+  modeSuppression?: boolean;
+}>();
+const emit = defineEmits<{
+  onClickAjouterAction: [resource: Resource];
+  onClickSupprimerAction: [resource: Resource];
+}>();
 
 const dateInFrench = computed(() => {
   const dateObj = new Date(resourceParam.date);
@@ -23,8 +31,13 @@ const ajouteAvecAccord = computed(() => {
   return resourceParam.media === "video" ? "ajoutée" : "ajouté";
 });
 
-const sayHelloAction = () => {
-  alert("Hello !");
+const onClickAjouterAction = (resource: Resource) => {
+  emit("onClickAjouterAction", resource);
+};
+
+const onClickSupprimerAction = (resource: Resource) => {
+  //console.log("onClickSupprimerAction:", resource);
+  emit("onClickSupprimerAction", resource);
 };
 </script>
 
@@ -32,7 +45,7 @@ const sayHelloAction = () => {
   <v-card
     class="resource"
     :class="resourceParam.isTop ? 'isTop' : ''"
-    min-height="200"
+    min-height="450"
   >
     <!-- <img :src="resource.image" height="250" /> -->
     <v-img :src="resourceParam.image || defaultImage" height="250"></v-img>
@@ -45,7 +58,18 @@ const sayHelloAction = () => {
     </v-card-text>
 
     <v-card-actions>
-      <v-btn color="secondary" @click="sayHelloAction">test click</v-btn>
+      <v-btn
+        v-if="modeAjout"
+        color="secondary"
+        @click="onClickAjouterAction(resourceParam)"
+        >+ Liste</v-btn
+      >
+      <v-btn
+        v-if="modeSuppression"
+        color="secondary"
+        @click="onClickSupprimerAction(resourceParam)"
+        >- Supprimer</v-btn
+      >
     </v-card-actions>
   </v-card>
 </template>
