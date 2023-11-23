@@ -46,6 +46,7 @@ const onClickSupprimerAction = (resource: Resource) => {
     class="resource"
     :class="resourceParam.isTop ? 'isTop' : ''"
     min-height="450"
+    :to="{ name: 'ResourceDetail', params: { id: resourceParam.id } }"
   >
     <!-- <img :src="resource.image" height="250" /> -->
     <a :href="resourceParam.url"

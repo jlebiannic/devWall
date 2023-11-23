@@ -2,11 +2,11 @@
 import Resource from "@/interfaces/resourceInterface";
 import ResourceItem from "@/components/ResourceItem.vue";
 import { ref } from "vue";
-import { resoureService } from "@/service/resourceService";
+import { resourceService } from "@/service/resourceService";
 
 const resources = ref<Resource[]>([]);
 
-resoureService.getResources().then((data) => (resources.value = data));
+resourceService.getResources().then((data) => (resources.value = data));
 
 //const listeDeLecture: Resource[] = reactive([]);
 const listeDeLecture = ref<Resource[]>([]);
