@@ -1,4 +1,9 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ref } from "vue";
+import ResourceForm from "./components/ResourceForm.vue";
+
+const isResourceFormOpen = ref(false);
+</script>
 
 <template>
   <v-app>
@@ -10,6 +15,11 @@
       </v-app-bar-title>
       <v-btn :to="{ name: 'About' }">About</v-btn>
       <v-btn :to="{ name: 'Admin' }">Administration</v-btn>
+      <!-- <v-btn :to="{ name: 'ResourceForm' }" color="secondary"
+        ><v-icon icon="mdi-plus-circle"></v-icon>Ajouter</v-btn -->
+      <v-btn @click="isResourceFormOpen = true" color="secondary"
+        ><v-icon icon="mdi-plus-circle"></v-icon>Ajouter</v-btn
+      >
     </v-app-bar>
     <v-main>
       <v-container>
@@ -17,6 +27,10 @@
       </v-container>
     </v-main>
   </v-app>
+  <ResourceForm
+    :isOpen="isResourceFormOpen"
+    @onClickAnnulerAction="() => (isResourceFormOpen = false)"
+  ></ResourceForm>
 </template>
 
 <style scoped>

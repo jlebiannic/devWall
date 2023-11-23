@@ -5,6 +5,7 @@ import { ref } from "vue";
 import { resourceService } from "@/service/resourceService";
 
 const resources = ref<Resource[]>([]);
+const isResourceFormOpen = ref(false);
 
 resourceService.getResources().then((data) => (resources.value = data));
 
