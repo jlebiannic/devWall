@@ -24,3 +24,12 @@ Vue Language Feature (Volar)
 vuetify-vscode
 Prettier: default formater, format on save (setting)
 REST Client (alternative postman ou insomnia)
+
+## Router VueJs
+
+npm install vue-router@4
+
+## Bonnes pratiques
+
+routes: lazy loading
+routes: utiliser les objets avec l'attribut "name" pour naviquer (permet de changer facilement les urls sans changer le code)
