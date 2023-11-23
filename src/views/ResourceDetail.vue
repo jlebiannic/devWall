@@ -5,6 +5,7 @@ import defaultImage from "@/assets/default.png";
 import frenchFlags from "@/assets/frenchFlag.png";
 import Resource from "@/interfaces/resourceInterface";
 import { ref } from "vue";
+import ContentDisplay from "@/components/ContentDisplay.vue";
 
 const idResource = useRoute().params.id;
 
@@ -31,7 +32,10 @@ resourceService
         :model-value="resourceDetail.rating"
         active-color="primary"
       />
-      <p>{{ resourceDetail.description }}</p>
+      <ContentDisplay>
+        <template #title>{{ resourceDetail.title }}</template>
+        {{ resourceDetail.description }}
+      </ContentDisplay>
       <v-btn
         :href="resourceDetail.url"
         target="blank"
