@@ -23,6 +23,17 @@ const resourceService = {
       console.error(error);
     }
   },
+  async createResource(resource: Resource): Promise<Resource | undefined> {
+    try {
+      const result = await axios.post(
+        `${import.meta.env.VITE_API_SERVER}/resources`,
+        resource
+      );
+      return result.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
 };
 
 export { resourceService };

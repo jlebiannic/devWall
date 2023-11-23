@@ -1,8 +1,14 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import ResourceForm from "./components/ResourceForm.vue";
+import router from "./router";
 
 const isResourceFormOpen = ref(false);
+
+const rechargerVue = () => {
+  router.go(0);
+  isResourceFormOpen.value = false;
+};
 </script>
 
 <template>
@@ -29,7 +35,8 @@ const isResourceFormOpen = ref(false);
   </v-app>
   <ResourceForm
     :isOpen="isResourceFormOpen"
-    @onClickAnnulerAction="() => (isResourceFormOpen = false)"
+    @onClickAnnulerAction="rechargerVue"
+    @onClickAjouterAction="rechargerVue"
   ></ResourceForm>
 </template>
 

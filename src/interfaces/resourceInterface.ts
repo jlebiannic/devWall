@@ -2,7 +2,7 @@ type Lang = "fr" | "en";
 type Media = "post" | "video" | "book";
 
 interface Resource {
-  id: string;
+  id?: string;
   media: Media;
   title: string;
   lang: Lang;
