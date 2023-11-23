@@ -9,7 +9,7 @@
         >
       </v-app-bar-title>
       <v-btn :to="{ name: 'About' }">About</v-btn>
-      <v-btn>Menu2</v-btn>
+      <v-btn :to="{ name: 'Admin' }">Administration</v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -22,5 +22,7 @@
 <style scoped>
 .devWall {
   color: white;
+  text-decoration: none;
+  font-size: 2rem;
 }
 </style>

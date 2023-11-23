@@ -9,6 +9,23 @@ const routes: RouteRecordRaw[] = [
     name: "Home",
   },
   {
+    path: "/admin",
+    component: () => import("@/views/Admin.vue"), // lazy loading
+    name: "Admin",
+    children: [
+      {
+        path: "gestion",
+        component: () => import("@/views/admin/Management.vue"), // lazy loading
+        name: "Management",
+      },
+      {
+        path: "/validation",
+        component: () => import("@/views/admin/Validation.vue"), // lazy loading
+        name: "Validation",
+      },
+    ],
+  },
+  {
     path: "/apropos",
     component: () => import("@/views/About.vue"), // lazy loading
     name: "About",
