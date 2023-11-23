@@ -26,7 +26,7 @@ const alertMessage = ref("");
 
 const ajouterAction = async () => {
   const date = new Date();
-  newResource.value.date = date.toLocaleDateString();
+  newResource.value.date = date.toISOString();
   const addedResource = await resourceService.createResource(newResource.value);
 
   if (addedResource) {
@@ -42,7 +42,7 @@ const ajouterAction = async () => {
 };
 </script>
 <template>
-  <v-dialog v-model="props.isOpen">
+  <v-dialog v-model="props.isOpen" width="70%">
     <v-card>
       <v-card-title>Ajouter une ressource</v-card-title>
 
@@ -55,28 +55,19 @@ const ajouterAction = async () => {
           v-model="newResource.title"
           label="Titre"
           required
-          hide-details
         ></v-text-field>
 
         <v-text-field
           v-model="newResource.url"
           label="Url"
           required
-          hide-details
         ></v-text-field>
 
-        <v-text-field
-          label="Image"
-          v-model="newResource.image"
-          required
-          hide-details
-        ></v-text-field>
+        <v-text-field label="Image" v-model="newResource.image"></v-text-field>
 
         <v-textarea
           label="Description"
           v-model="newResource.description"
-          required
-          hide-details
         ></v-textarea>
 
         <v-select
