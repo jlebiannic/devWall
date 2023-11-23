@@ -1,0 +1,15 @@
+get http://[::1]:3005/resources
+###
+get http://[::1]:3005/resources/ogop123
+###
+get http://[::1]:3005/resources?media=post&lang=fr
+###
+post http://[::1]:3005/resources
+Content-Type: application/json
+
+{
+"title" : "Test jeudi",
+"lang" : "fr",
+"url" : "http://google.com"
+
+}

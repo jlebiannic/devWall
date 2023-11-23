@@ -1,11 +1,16 @@
 <script lang="ts" setup>
+import axios from "axios";
 import datas from "@/datas/db";
 import Resource from "@/interfaces/resourceInterface";
 import ResourceItem from "@/components/ResourceItem.vue";
-import defaultImage from "@/assets/default.png";
-import { reactive } from "vue";
 import { ref } from "vue";
-const resources: Resource[] = datas;
+
+const resources = ref<Resource[]>([]);
+//resources.value = datas;
+axios
+  .get(`${import.meta.env.VITE_API_SERVER}/resources`)
+  .then((result) => (resources.value = result.data))
+  .catch((erreur) => console.error(erreur));
 
 //const listeDeLecture: Resource[] = reactive([]);
 const listeDeLecture = ref<Resource[]>([]);
@@ -41,7 +46,13 @@ const supprimerDeLaListeDeLecture = (resource: Resource) => {
           v-if="listeDeLecture.length > 0"
         >
           <v-row>
-            <v-col cols="12" md="4" lg="3" v-for="resource in listeDeLecture">
+            <v-col
+              v-for="resource in listeDeLecture"
+              :key="resource.id"
+              cols="12"
+              md="4"
+              lg="3"
+            >
               <ResourceItem
                 :resourceParam="resource"
                 @onClickSupprimerAction="supprimerDeLaListeDeLecture($event)"
@@ -52,7 +63,13 @@ const supprimerDeLaListeDeLecture = (resource: Resource) => {
         </v-card>
         <v-row>
           <!-- cols="12" est la largeur de col par défaut donc tout ce qui n'est pas md et lg car ils sont spécifiés -->
-          <v-col cols="12" md="4" lg="3" v-for="resource in resources">
+          <v-col
+            v-for="resource in resources"
+            :key="resource.id"
+            cols="12"
+            md="4"
+            lg="3"
+          >
             <ResourceItem
               :resourceParam="resource"
               @onClickAjouterAction="ajouterALaListeDeLecture($event)"

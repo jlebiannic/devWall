@@ -48,7 +48,9 @@ const onClickSupprimerAction = (resource: Resource) => {
     min-height="450"
   >
     <!-- <img :src="resource.image" height="250" /> -->
-    <v-img :src="resourceParam.image || defaultImage" height="250"></v-img>
+    <a :href="resourceParam.url"
+      ><v-img :src="resourceParam.image || defaultImage" height="250"></v-img
+    ></a>
     <v-card-title>{{ resourceParam.title }}</v-card-title>
     <v-card-text>
       <p v-if="resourceParam.lang === 'fr'">
@@ -76,7 +78,7 @@ const onClickSupprimerAction = (resource: Resource) => {
 
 <style scoped>
 .resource {
-  border: 1px solid;
+  /* border: 1px solid; */
 }
 
 .isTop {
