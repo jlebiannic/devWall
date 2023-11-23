@@ -13,12 +13,12 @@ const resourceService = {
       return [];
     }
   },
-  async getResource(id: string): Promise<Resource[] | undefined> {
+  async getResource(id: string): Promise<Resource | undefined> {
     try {
       const result = await axios.get(
         `${import.meta.env.VITE_API_SERVER}/resources?id=${id}`
       );
-      return result.data;
+      return result.data[0];
     } catch (error) {
       console.error(error);
     }

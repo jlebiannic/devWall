@@ -11,7 +11,7 @@ const idResource = useRoute().params.id;
 const resourceDetail = ref<Resource>();
 resourceService
   .getResource(idResource as string)
-  .then((data) => (resourceDetail.value = data ? data[0] : undefined));
+  .then((data) => (resourceDetail.value = data));
 </script>
 
 <template>
@@ -32,8 +32,12 @@ resourceService
         active-color="primary"
       />
       <p>{{ resourceDetail.description }}</p>
-      <a :href="resourceDetail.url"
-        ><v-btn color="secondary">Voir la resource</v-btn></a
+      <v-btn
+        :href="resourceDetail.url"
+        target="blank"
+        class="mt-5"
+        color="secondary"
+        >Voir la resource</v-btn
       >
     </v-col>
   </v-row>
