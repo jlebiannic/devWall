@@ -2,6 +2,8 @@
 import { ref } from "vue";
 import ResourceForm from "./components/ResourceForm.vue";
 import router from "./router";
+import { resourceService } from "@/service/resourceService";
+import { useResourceStore } from "@/stores/resourceStore";
 
 const isResourceFormOpen = ref(false);
 
@@ -9,6 +11,9 @@ const rechargerVue = () => {
   router.go(0);
   isResourceFormOpen.value = false;
 };
+
+const resourceStore = useResourceStore();
+resourceService.getResources().then((data) => (resourceStore.resources = data));
 </script>
 
 <template>

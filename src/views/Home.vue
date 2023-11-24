@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import Resource from "@/interfaces/resourceInterface";
 import ResourceItem from "@/components/ResourceItem.vue";
-import { ref } from "vue";
-import { resourceService } from "@/service/resourceService";
+import { ref, computed } from "vue";
+import { useResourceStore } from "@/stores/resourceStore";
+import { storeToRefs } from "pinia";
 
-const resources = ref<Resource[]>([]);
-const isResourceFormOpen = ref(false);
+//const resources = ref<Resource[]>([]);
+//const isResourceFormOpen = ref(false);
 
-resourceService.getResources().then((data) => (resources.value = data));
+const resourceStore = useResourceStore();
+///resources.value = resourceStore.resources;
+//const resources = computed(() => resourceStore.resources);
+
+const { resources } = storeToRefs(resourceStore);
 
 //const listeDeLecture: Resource[] = reactive([]);
 const listeDeLecture = ref<Resource[]>([]);
@@ -61,7 +66,7 @@ const supprimerDeLaListeDeLecture = (resource: Resource) => {
     >
       <ResourceItem
         :resourceParam="resource"
-        @onClickAjouterAction="ajouterALaListeDeLecture($event)"
+        @onClickAjouterAction.prevent="ajouterALaListeDeLecture($event)"
         :modeAjout="true"
       ></ResourceItem>
     </v-col>

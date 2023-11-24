@@ -337,6 +337,19 @@
       "lang": "fr",
       "rating": 3,
       "id": "1pt45ZN"
+    },
+    {
+      "title": "Computer Security",
+      "description": "À propos de l'auteur\nWali Khan Kakar\n",
+      "url": "https://www.amazon.fr/Computer-Security-English-Wali-Kakar-ebook/dp/B0CK3CQ9XS/ref=sr_1_6?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1GL9RMN1S2IKL&keywords=computer&qid=1700813124&s=digital-text&sprefix=computer%2Cdigital-text%2C93&sr=1-6",
+      "image": "https://m.media-amazon.com/images/I/71mE-9bJpnL._SY466_.jpg",
+      "date": "2023-11-24T08:09:41.444Z",
+      "isValid": false,
+      "isTop": false,
+      "media": "book",
+      "lang": "en",
+      "rating": 3,
+      "id": "RorX6WO"
     }
   ]
 }
