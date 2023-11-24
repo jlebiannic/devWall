@@ -23,6 +23,11 @@ export const useResourceStore = defineStore("resourceStore", () => {
   const validResources = computed(() =>
     resources.value.filter((r) => r.isValid)
   );
+
+  const invalidResources = computed(() =>
+    resources.value.filter((r) => !r.isValid)
+  );
+
   async function loadResources() {
     resources.value = await resourceService.getResources();
   }
@@ -38,5 +43,28 @@ export const useResourceStore = defineStore("resourceStore", () => {
     return newResource;
   }
 
-  return { resources, validResources, loadResources, createResource };
+  async function removeResource(resourceId: string) {
+    const result = await resourceService.removeResource(resourceId);
+    if (result) {
+      resources.value = resources.value.filter((r) => r.id !== resourceId);
+    }
+  }
+
+  async function updateResource(resource: Resource) {
+    const result = await resourceService.updateResource(resource);
+    if (result) {
+      //resources.value.unshift(newResource); TODO
+    }
+    return result;
+  }
+
+  return {
+    resources,
+    validResources,
+    invalidResources,
+    loadResources,
+    createResource,
+    removeResource,
+    updateResource,
+  };
 });

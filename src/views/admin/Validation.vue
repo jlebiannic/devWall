@@ -1,19 +1,48 @@
+<script setup lang="ts">
+import Resource from "@/interfaces/resourceInterface";
+import { useResourceStore } from "@/stores/resourceStore";
+import { storeToRefs } from "pinia";
+
+const resourceStore = useResourceStore();
+const { invalidResources: resources } = storeToRefs(resourceStore);
+const supprimerAction = (resource: Resource) => {
+  resource.id && resourceStore.removeResource(resource.id);
+};
+const ajouterAction = (resource: Resource) => {
+  resource.id && resourceStore.updateResource(resource);
+};
+</script>
 <template>
   <v-card>
     <v-card-title>Validation</v-card-title>
     <v-card-text>
-      <p>
-        Voluptate do qui ut laboris labore tempor officia. Incididunt dolor quis
-        laborum voluptate adipisicing occaecat. Dolor laboris velit magna nisi
-        nisi amet aliqua minim. Nisi ad laborum cupidatat occaecat ad sit
-        exercitation amet nostrud proident incididunt dolore. Aliquip
-        exercitation voluptate sit et eu mollit sint eu esse sit aute sunt
-        nostrud.
-      </p>
+      <v-table>
+        <thead>
+          <tr>
+            <th class="text-left">Titre</th>
+            <th class="text-left">date</th>
+            <th class="text-left">Opérations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="resource in resources" :key="resource.id">
+            <td>{{ resource.title }}</td>
+            <td>{{ new Date(resource.date).toLocaleDateString() }}</td>
+            <td>
+              <v-btn @click="ajouterAction(resource)" color="secondary"
+                >Ajouter</v-btn
+              >
+            </td>
+            <td>
+              <v-btn @click="supprimerAction(resource)" color="warning"
+                >Supprimer</v-btn
+              >
+            </td>
+          </tr>
+        </tbody>
+      </v-table>
     </v-card-text>
   </v-card>
 </template>
-
-<script setup lang="ts"></script>
 
 <style scoped></style>

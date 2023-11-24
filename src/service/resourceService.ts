@@ -34,6 +34,28 @@ const resourceService = {
       console.error(error);
     }
   },
+
+  async removeResource(id: string) {
+    try {
+      await axios.delete(`${import.meta.env.VITE_API_SERVER}/resources/${id}`);
+      return true;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  },
+
+  async updateResource(resource: Resource): Promise<Resource | undefined> {
+    try {
+      const result = await axios.put(
+        `${import.meta.env.VITE_API_SERVER}/resources/${resource.id}`,
+        resource
+      );
+      return result.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
 };
 
 export { resourceService };
