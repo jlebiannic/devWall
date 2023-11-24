@@ -1,13 +1,7 @@
 <script setup lang="ts">
-import Resource from "@/interfaces/resourceInterface";
-import { useResourceStore } from "@/stores/resourceStore";
-import { storeToRefs } from "pinia";
+import { useAdmin } from "@/composables/useAdmin";
 
-const resourceStore = useResourceStore();
-const { validResources: resources } = storeToRefs(resourceStore);
-const supprimerAction = (resource: Resource) => {
-  resource.id && resourceStore.removeResource(resource.id);
-};
+const { validResources: resources, supprimerAction } = useAdmin();
 </script>
 <template>
   <v-card>
