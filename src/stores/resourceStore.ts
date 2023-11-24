@@ -54,6 +54,12 @@ export const useResourceStore = defineStore("resourceStore", () => {
     const resourceUpdated = await resourceService.updateResource(resource);
     if (resourceUpdated) {
       //resources.value.unshift(newResource); TODO
+      const index = resources.value.findIndex(
+        (r) => r.id === resourceUpdated.id
+      );
+      if (index !== -1) {
+        resources.value[index] = resourceUpdated;
+      }
     }
     return resourceUpdated;
   }

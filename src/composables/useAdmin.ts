@@ -10,6 +10,7 @@ export function useAdmin() {
     resource.id && resourceStore.removeResource(resource.id);
   };
   const ajouterAction = (resource: Resource) => {
+    resource.isValid = true;
     resource.id && resourceStore.updateResource(resource);
   };
 
