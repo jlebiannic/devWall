@@ -67,7 +67,7 @@ const supprimerDeLaListeDeLecture = (resource: Resource) => {
     >
       <ResourceItem
         :resourceParam="resource"
-        @onClickAjouterAction.prevent="ajouterALaListeDeLecture($event)"
+        @onClickAjouterAction="ajouterALaListeDeLecture($event)"
         :modeAjout="true"
       ></ResourceItem>
     </v-col>
