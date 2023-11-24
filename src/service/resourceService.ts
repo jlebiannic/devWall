@@ -5,7 +5,7 @@ const resourceService = {
   async getResources(): Promise<Resource[]> {
     try {
       const result = await axios.get(
-        `${import.meta.env.VITE_API_SERVER}/resources`
+        `${import.meta.env.VITE_API_SERVER}/resources?_sort=date&_order=desc`
       );
       return result.data;
     } catch (error) {

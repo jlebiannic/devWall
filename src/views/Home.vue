@@ -9,10 +9,11 @@ import { storeToRefs } from "pinia";
 //const isResourceFormOpen = ref(false);
 
 const resourceStore = useResourceStore();
-///resources.value = resourceStore.resources;
+const { validResources: resources } = storeToRefs(resourceStore);
+//resources.value = resourceStore.resources;
 //const resources = computed(() => resourceStore.resources);
 
-const { resources } = storeToRefs(resourceStore);
+//const { resources } = storeToRefs(resourceStore);
 
 //const listeDeLecture: Resource[] = reactive([]);
 const listeDeLecture = ref<Resource[]>([]);
