@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import ResourceForm from "./components/ResourceForm.vue";
-import router from "./router";
+import { useRouter } from "vue-router";
 
 import { useResourceStore } from "@/stores/resourceStore";
+import { useAuthStore } from "./stores/authStore";
 
 const isResourceFormOpen = ref(false);
 
@@ -14,6 +15,14 @@ const rechargerVue = () => {
 
 const resourceStore = useResourceStore();
 resourceStore.loadResources();
+
+const authStore = useAuthStore();
+const router = useRouter();
+
+const disconnectAction = () => {
+  authStore.disconnect();
+  router.push({ name: "Home" });
+};
 </script>
 
 <template>
@@ -30,6 +39,9 @@ resourceStore.loadResources();
         ><v-icon icon="mdi-plus-circle"></v-icon>Ajouter</v-btn -->
       <v-btn @click="isResourceFormOpen = true" color="secondary"
         ><v-icon icon="mdi-plus-circle"></v-icon>Ajouter</v-btn
+      >
+      <v-btn @click="disconnectAction" color="secondary"
+        ><v-icon>mdi-door-open</v-icon>Déconnexion</v-btn
       >
     </v-app-bar>
     <v-main>

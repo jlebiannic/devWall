@@ -13,3 +13,25 @@ Content-Type: application/json
 "url" : "http://google.com"
 
 }
+###
+post http://[::1]:3005/signin
+Content-Type: application/json
+
+{
+    "email":"admin@gmail.com",
+    "password":"12345"
+}
+###
+post http://[::1]:3005/signup
+Content-Type: application/json
+
+{
+    "email":"fabien@gmail.com",
+    "password":"1234567"
+}
+
+### test url protégée
+delete http://[::1]:3005/664/resources/ogop123
+
+delete http://[::1]:3005/664/resources/ogop123
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTcwMDgzNjc2MSwiZXhwIjoxNzAwODQwMzYxLCJzdWIiOiIyIn0.nAcuahbAWNpGgw20_ywAvehuskRdMFK0Zxusk7ZjtgI

@@ -15,6 +15,8 @@ npm install -g json-server
 
 npm install -D json-server json-server-auth
 
+### Lancer le server:
+
 json-server db.json -m ./node_modules/json-server-auth -p 3005
 
 ## plugins
@@ -33,3 +35,8 @@ npm install vue-router@4
 
 routes: lazy loading
 routes: utiliser les objets avec l'attribut "name" pour naviquer (permet de changer facilement les urls sans changer le code)
+
+## Pinia
+
+npm i pinia
+npm i pinia-plugin-persistedstate

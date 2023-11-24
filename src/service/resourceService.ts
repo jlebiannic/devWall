@@ -1,3 +1,4 @@
+import { useAuthStore } from "./../stores/authStore";
 import Resource from "@/interfaces/resourceInterface";
 import axios from "axios";
 
@@ -37,7 +38,14 @@ const resourceService = {
 
   async removeResource(id: string) {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_SERVER}/resources/${id}`);
+      const { user } = useAuthStore();
+      const headers = {
+        headers: { Authorization: `Bearer ${user.accessToken}` },
+      };
+      await axios.delete(
+        `${import.meta.env.VITE_API_SERVER_PROTECTED}/resources/${id}`,
+        headers
+      );
       return true;
     } catch (error) {
       console.error(error);
@@ -47,9 +55,14 @@ const resourceService = {
 
   async updateResource(resource: Resource): Promise<Resource | undefined> {
     try {
+      const { user } = useAuthStore();
+      const headers = {
+        headers: { Authorization: `Bearer ${user.accessToken}` },
+      };
       const result = await axios.put(
-        `${import.meta.env.VITE_API_SERVER}/resources/${resource.id}`,
-        resource
+        `${import.meta.env.VITE_API_SERVER_PROTECTED}/resources/${resource.id}`,
+        resource,
+        headers
       );
       return result.data;
     } catch (error) {
