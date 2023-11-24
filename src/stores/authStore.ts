@@ -2,7 +2,7 @@ import Resource from "@/interfaces/resourceInterface";
 import User from "@/interfaces/userInterface";
 import axios from "axios";
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 export const useAuthStore = defineStore(
   "authStore",
@@ -34,10 +34,15 @@ export const useAuthStore = defineStore(
       user.value.accessToken = "";
     };
 
+    const headers = computed(() => ({
+      headers: { Authorization: `Bearer ${user.value.accessToken}` },
+    }));
+
     return {
       user,
       signin,
       disconnect,
+      headers,
     };
   },
   { persist: true }

@@ -8,19 +8,6 @@
   ],
   "resources": [
     {
-      "id": "fsfsd",
-      "media": "video",
-      "title": "NO-CODE : Fausse bonne idée ?",
-      "lang": "fr",
-      "image": "",
-      "url": "https://www.youtube.com/watch?v=h2VqCnmni8M",
-      "description": "",
-      "rating": 3,
-      "isTop": false,
-      "isValid": true,
-      "date": "2021-04-09 10:10:00"
-    },
-    {
       "id": "ogop123",
       "media": "post",
       "lang": "fr",
@@ -71,19 +58,6 @@
       "isTop": false,
       "isValid": true,
       "date": "2021-01-09 08:30:00"
-    },
-    {
-      "id": "xcggt",
-      "media": "video",
-      "lang": "en",
-      "title": "Vue.js The Documentary",
-      "image": "",
-      "url": "https://www.youtube.com/watch?v=OrxmtDw4pVI",
-      "description": "by honeypot.io | What began as a side project of a Google developer now shares the JS leaderboard with #React and #Angular... With the help of Sarah Drasner, Taylor Otwell, Thorsten Lünborg and many others from the Vue.js community, Evan You tells the story of how he fought against the odds to bring #Vuejs to life.",
-      "rating": 4,
-      "isTop": false,
-      "isValid": true,
-      "date": "2021-03-13 17:30:00"
     },
     {
       "title": "test 1",
@@ -324,6 +298,19 @@
       "lang": "en",
       "rating": 3,
       "id": "fuNd0pu"
+    },
+    {
+      "title": "dsf",
+      "description": "sd",
+      "url": "ds",
+      "image": "ds",
+      "date": "2023-11-24T15:19:13.473Z",
+      "isValid": false,
+      "isTop": false,
+      "media": "post",
+      "lang": "en",
+      "rating": 3,
+      "id": "mJrKVcI"
     }
   ]
 }

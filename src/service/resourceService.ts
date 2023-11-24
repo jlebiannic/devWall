@@ -38,10 +38,7 @@ const resourceService = {
 
   async removeResource(id: string) {
     try {
-      const { user } = useAuthStore();
-      const headers = {
-        headers: { Authorization: `Bearer ${user.accessToken}` },
-      };
+      const { headers } = useAuthStore();
       await axios.delete(
         `${import.meta.env.VITE_API_SERVER_PROTECTED}/resources/${id}`,
         headers
@@ -55,10 +52,8 @@ const resourceService = {
 
   async updateResource(resource: Resource): Promise<Resource | undefined> {
     try {
-      const { user } = useAuthStore();
-      const headers = {
-        headers: { Authorization: `Bearer ${user.accessToken}` },
-      };
+      const { headers } = useAuthStore();
+
       const result = await axios.put(
         `${import.meta.env.VITE_API_SERVER_PROTECTED}/resources/${resource.id}`,
         resource,
