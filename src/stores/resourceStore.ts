@@ -51,11 +51,11 @@ export const useResourceStore = defineStore("resourceStore", () => {
   }
 
   async function updateResource(resource: Resource) {
-    const result = await resourceService.updateResource(resource);
-    if (result) {
+    const resourceUpdated = await resourceService.updateResource(resource);
+    if (resourceUpdated) {
       //resources.value.unshift(newResource); TODO
     }
-    return result;
+    return resourceUpdated;
   }
 
   return {

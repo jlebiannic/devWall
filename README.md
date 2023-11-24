@@ -40,3 +40,15 @@ routes: utiliser les objets avec l'attribut "name" pour naviquer (permet de chan
 
 npm i pinia
 npm i pinia-plugin-persistedstate
+
+## run build
+
+npm run build
+npx http-server dist
+
+## Divers
+
+Nuxt: SSR
+Astro: https://astro.build/
+Strapi: CMS
+podcast: double-slash.dev

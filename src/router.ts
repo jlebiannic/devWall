@@ -1,4 +1,9 @@
-import { RouteRecordRaw, createRouter, createWebHistory } from "vue-router";
+import {
+  RouteRecordRaw,
+  createRouter,
+  createWebHashHistory,
+  createWebHistory,
+} from "vue-router";
 import Home from "@/views/Home.vue";
 import ResourceDetail from "@/views/ResourceDetail.vue";
 import ResourceForm from "@/views/ResourceForm.vue";
@@ -53,7 +58,7 @@ const routes: RouteRecordRaw[] = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(), //import.meta.env.BASE_URL
+  history: createWebHashHistory(), //import.meta.env.BASE_URL
   routes,
 });
 
