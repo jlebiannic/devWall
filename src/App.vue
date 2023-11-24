@@ -8,7 +8,7 @@ import { useResourceStore } from "@/stores/resourceStore";
 const isResourceFormOpen = ref(false);
 
 const rechargerVue = () => {
-  router.go(0);
+  //router.go(0);
   isResourceFormOpen.value = false;
 };
 

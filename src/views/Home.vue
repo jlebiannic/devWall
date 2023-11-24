@@ -9,7 +9,7 @@ import { storeToRefs } from "pinia";
 //const isResourceFormOpen = ref(false);
 
 const resourceStore = useResourceStore();
-const { validResources: resources } = storeToRefs(resourceStore);
+const { resources } = storeToRefs(resourceStore);
 //resources.value = resourceStore.resources;
 //const resources = computed(() => resourceStore.resources);
 

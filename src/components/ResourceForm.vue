@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Resource from "@/interfaces/resourceInterface";
 import { resourceService } from "@/service/resourceService";
+import { useResourceStore } from "@/stores/resourceStore";
 import { ref } from "vue";
 
 const props = defineProps<{ isOpen: boolean }>();
@@ -24,10 +25,13 @@ const newResource = ref<Resource>({
 
 const alertMessage = ref("");
 
+const resourceStore = useResourceStore();
+
 const ajouterAction = async () => {
   const date = new Date();
   newResource.value.date = date.toISOString();
-  const addedResource = await resourceService.createResource(newResource.value);
+
+  const addedResource = await resourceStore.createResource(newResource.value);
 
   if (addedResource) {
     alertMessage.value = "Ressource ajoutée avec succès";
